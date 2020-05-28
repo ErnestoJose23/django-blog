@@ -3,7 +3,10 @@ from django.shortcuts import render
 
 def home_page(request):
     title= "Index"
-    return render(request, "home.html", {"title": title})
+    context = {"title": title}
+    if request.user.is_authenticated:
+        context = {"title": title, "my_list": ["Monday", "Tuesday", "Wednesday"]}
+    return render(request, "home.html", context)
 
 def about_page(request):
     return render(request, "about.html", {"title": "About us"})
