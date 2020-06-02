@@ -24,8 +24,8 @@ from .views import (home_page, about_page, contact_page)
 
 urlpatterns = [
     path('', home_page),
-    path('blog/', include('blog.urls')),
     path('blog-new/', blog_post_create_view),
+    path('blog/', include('blog.urls')),
     re_path(r'^pages?/$', about_page),
     re_path(r'^about/$', about_page),
     path('contact/', contact_page),
