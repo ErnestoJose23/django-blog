@@ -3,5 +3,13 @@
 {% block title %} Contact {% endblock %}
 
 {% block content %}
-<p>Contact us form</p>
+{% if title %}
+<h1> {{ title }} </h1>
+{% endif %}
+<form method='POST' action='.'>
+    <input type="text" name="full_name">
+    <input type="email" name="email">
+    <textarea name='content'></textarea>
+    <button type="submit">Send</button>
+</form>
 {% endblock %}
