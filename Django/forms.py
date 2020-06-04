@@ -10,6 +10,6 @@ class ContactForm(forms.Form):
     def clean_email(self, *args, **kwargs):
         email = self.cleaned_data.get('email')
         print(email)
-        if email.endswith(".edu")
+        if email.endswith(".edu"):
             raise forms.ValidationError("This is not a valid email, dont use .edu")
         return email
