@@ -9,9 +9,10 @@ from .models import BlogPost
 def blog_post_create_view(request):
     form = BlogPostForm(request.POST or None)
     if form.is_valid():
-        print(form.cleaned_data)
+        obj = BlogPost.objects.create(**form.cleaned_data)
+        form = BlogPostForm()
     template_name = 'contact.html'
-    context = {'form': None}
+    context = {'form': form}
     return render(request, template_name, context)
 
 def blog_post_list_view(request):
