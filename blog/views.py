@@ -32,9 +32,10 @@ def blog_post_detail_view(request, slug):
     return render(request, template_name, context)
 
 def blog_post_update_view(request, slug):
+    form = BlogPostModelForm(request.POST or None)
     obj = get_object_or_404(BlogPost, slug = slug)
-    template_name = 'blog/update.html'
-    context = {"object": obj, 'form': None}
+    template_name = 'form.html'
+    context = { 'form': form, "title": "Update {obj.title}"}
     return render(request, template_name, context)
 
 def blog_post_delete_view(request, slug):
