@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> {{ object.title }}</h1>
-<p> {{ object.content }} </p>
+<div class="mt-5">
+    <h1 class="mt-5"> {{ object.title }}</h1>
+    <p class="mt-4"> {{ object.content }} </p>
 
-{% if request.user.is_authenticated %}
-{% if request.user.is_staff %}
-<a href="{{object.get_edit_url">Edit</a>
-    <a href ="{{ object.get_delete_url" class="btn btn-black">Delete</a>
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_staff %}
+    <a href='{{ object.get_edit_url }}' class="btn btn-warning  mr-3">Edit</a>
+    <a href="{{ object.get_delete_url }}" class="btn btn-dark">Delete</a>
     {% endif %}
 
-{% endif %}
-
+    {% endif %}
+</div>
 {% endblock %}
