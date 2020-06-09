@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="mt-5">
-    <h1 class="mt-5"> {{ object.title }}</h1>
-    <p class="mt-4"> {{ object.content }} </p>
+    {% include 'blog/list_inline.html' with blog_post=object detail=True %}
 
     {% if request.user.is_authenticated %}
     {% if request.user.is_staff %}
-    <a href='{{ object.get_edit_url }}' class="btn btn-warning  mr-3">Edit</a>
-    <a href="{{ object.get_delete_url }}" class="btn btn-dark">Delete</a>
+    <div class="col col-md-6 mx-auto mt-5 mb-5">
+        <a href='{{ object.get_edit_url }}' class="btn btn-warning  mr-3">Edit</a>
+        <a href="{{ object.get_delete_url }}" class="btn btn-dark">Delete</a>
+    </div>
     {% endif %}
 
     {% endif %}
