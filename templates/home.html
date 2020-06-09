@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %} Home {% endblock %}
-
 {% block content %}
-{{ title }}
-
-{{ user }}
+<h1 class="mt-5">{{ title }}</h1>
 
 
-{%for a in my_list %}
-<li>{{ a }}</li>
+
+{%for a in blog_list %}
+{% include 'blog/list_inline.html' with blog_post=a %}
 {% endfor %}
 
 

@@ -1,12 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.template.loader import get_template
 from .forms import ContactForm
+
+from blog.models import BlogPost
 
 def home_page(request):
     title= "Index"
-    context = {"title": title}
-    if request.user.is_authenticated:
-        context = {"title": title, "my_list": ["Monday", "Tuesday", "Wednesday"]}
+    qs = BlogPost.objects.all()[:5]
+    context = {"title": "Welcome to Django Blog", "blog_list": qs}
     return render(request, "home.html", context)
 
 def about_page(request):
