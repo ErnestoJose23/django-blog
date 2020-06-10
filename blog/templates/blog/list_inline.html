@@ -1,5 +1,5 @@
 <div class="col col-md-6 mx-auto mt-5">
-    <div class="card">
+    <div class="card {% if not blog_post.publish_date %} bg-secondary text-light{% endif %}">
         <div class="card-body">
             <h5 class="card-title">{{blog_post.title}}</h5>
             <p class="card-text">
@@ -10,7 +10,7 @@
                 {% endif %}
             </p>
             {% if not detail %}
-            {% if not blog_post.publish_date %}Draft{% endif %}
+
             <a href="{{ blog_post.get_absolute_url }}" class="btn btn-primary">Show
                 more</a>{% endif %}
         </div>
