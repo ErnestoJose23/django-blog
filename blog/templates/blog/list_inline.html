@@ -1,8 +1,9 @@
 <div class="col col-md-6 mx-auto mt-5">
-    <div class="card {% if not blog_post.publish_date %} bg-secondary text-light{% endif %}">
+    <div class="card {% if not blog_post.publish_date %} border border-warning{% endif %}">
         <div class="card-body">
             <h5 class="card-title">{{blog_post.title}}</h5>
             <p class="card-text">
+                <small class="text-muted">{{ blog_post.publish_date }}</small>
                 {% if truncate %}
                 {{blog_post.content|linebreaks|truncatewords:30}}
                 {% else %}
