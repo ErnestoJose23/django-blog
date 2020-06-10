@@ -3,6 +3,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
 
+
 # Create your views here.
 from .forms import BlogPostForm, BlogPostModelForm
 from .models import BlogPost
@@ -20,7 +21,7 @@ def blog_post_create_view(request):
     return render(request, template_name, context)
 
 def blog_post_list_view(request):
-    qs = BlogPost.objects.all()
+    qs = BlogPost.objects.all().published()
     template_name = 'blog/list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)
