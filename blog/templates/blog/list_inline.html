@@ -9,7 +9,9 @@
                 {{blog_post.content|linebreaks}}
                 {% endif %}
             </p>
-            {% if not detail %}<a href="{{ blog_post.get_absolute_url }}" class="btn btn-primary">Show
+            {% if not detail %}
+            {% if not blog_post.publish_date %}Draft{% endif %}
+            <a href="{{ blog_post.get_absolute_url }}" class="btn btn-primary">Show
                 more</a>{% endif %}
         </div>
     </div>

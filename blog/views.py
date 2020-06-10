@@ -21,7 +21,10 @@ def blog_post_create_view(request):
     return render(request, template_name, context)
 
 def blog_post_list_view(request):
-    qs = BlogPost.objects.all().published()
+    qs = BlogPost.objects.published()
+    if request.user.is_authenticated:
+        my_qs = BlogPost.objects.filter(user=request.user)
+        qs = (qs | my_qs).distinct()
     template_name = 'blog/list.html'
     context = {'object_list': qs}
     return render(request, template_name, context)

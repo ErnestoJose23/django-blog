@@ -15,6 +15,9 @@ class BlogPostManager(models.Manager):
     def get_queryset(self):
         return BlogPostQuerySet(self.model, using=self._db)
 
+    def published(self):
+        return self.get_queryset().published()
+
 class BlogPost(models.Model):
     user = models.ForeignKey(User, default=1,null= True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=120)
