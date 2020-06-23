@@ -12,4 +12,4 @@ def search_view(request):
 
     SearchQuery.objects.create(user=user, query=query)
     context = {"query": query }
-    return render(request, 'search/view.html', context)
+    return render(request, 'searches/view.html', context)
