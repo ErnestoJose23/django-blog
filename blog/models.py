@@ -10,6 +10,9 @@ class BlogPostQuerySet(models.QuerySet):
     def published(self):
         now = timezone.now()
         return self.filter(publish_date__lte=now)
+    
+    def search(self, query)
+        return self.filter(title__iexact=query)
 
 class BlogPostManager(models.Manager):
     def get_queryset(self):
@@ -17,6 +20,11 @@ class BlogPostManager(models.Manager):
 
     def published(self):
         return self.get_queryset().published()
+
+    def search(self, query=None):
+        if query is None:
+            return self.get_queryset().none()
+        return self.get_queryset().published().search(query)
 
 class BlogPost(models.Model):
     user = models.ForeignKey(User, default=1,null= True, on_delete=models.SET_NULL)
