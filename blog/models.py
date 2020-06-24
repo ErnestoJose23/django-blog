@@ -11,7 +11,7 @@ class BlogPostQuerySet(models.QuerySet):
         now = timezone.now()
         return self.filter(publish_date__lte=now)
     
-    def search(self, query)
+    def search(self, query):
         return self.filter(title__iexact=query)
 
 class BlogPostManager(models.Manager):
