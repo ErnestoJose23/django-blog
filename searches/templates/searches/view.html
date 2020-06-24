@@ -15,6 +15,12 @@
         </form>
         {% endif %}
 
+        {% for blog_item in blog_list %}
+
+        {% include 'blog/list_inline.html' with blog_post=blog_item truncate=True detail=False %}
+
+        {% endfor %}
+
     </div>
 
 </div>
